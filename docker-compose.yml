@@ -1,27 +1,27 @@
-
-### **`docker-compose.yml`** 
-
-```yaml
 version: '3.8'
+
 services:
   api:
-    build: ./backend
+    build: ./Backend
     ports:
       - "5000:5000"
     environment:
       - DB_HOST=mysql
       - DB_USER=root
       - DB_PASS=password
-      - DB_NAME=users
+      - DB_NAME=task_management_db  # Define the main database name
     depends_on:
       - mysql
+    volumes:
+      - ./Backend:/app
+    command: npm run dev  # Start the backend in dev mode using nodemon
 
   mysql:
     image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: users
+      MYSQL_DATABASE: task_management_db  # Set the database name here
     ports:
       - "3306:3306"
     volumes:
