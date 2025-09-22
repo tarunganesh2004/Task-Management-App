@@ -78,7 +78,7 @@ const TaskList = () => {
                 {filteredTasks.map((task) => (
                     <div
                         key={task.id}
-                        className={`bg-white dark:bg-gray-800 rounded-lg shadow p-4 border-l-4 ${task.priority === 'high' ? 'border-red-500' :
+                        className={`bg-white dark:bg-gray-800 rounded-lg shadow p-4 border-l-4 card-hover ${task.priority === 'high' ? 'border-red-500' :
                                 task.priority === 'medium' ? 'border-yellow-500' : 'border-green-500'
                             }`}
                     >

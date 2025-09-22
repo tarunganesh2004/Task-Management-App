@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, LogIn } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import AnimatedBackground from '../AnimatedBackground';
+import AnimatedForm from '../AnimatedForm';
 
 const Login = ({ onToggleForm }) => {
     const [email, setEmail] = useState('');
@@ -29,7 +31,9 @@ const Login = ({ onToggleForm }) => {
         login({ username: email.split('@')[0], email });
     };
 
-    return (
+    return (<>
+        
+        <AnimatedForm/>
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
                 <div className="p-8">
@@ -111,7 +115,7 @@ const Login = ({ onToggleForm }) => {
 
                         <button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-4 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300"
+                            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-4 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 btn-hover-effect"
                         >
                             Sign in
                         </button>
@@ -131,7 +135,8 @@ const Login = ({ onToggleForm }) => {
                 </div>
             </div>
         </div>
-    );
+    </>
+        );
 };
 
 export default Login;

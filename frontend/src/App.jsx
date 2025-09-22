@@ -9,6 +9,7 @@ import TaskList from './components/tasks/TaskList';
 import AddTask from './components/tasks/AddTask';
 import EditTask from './components/tasks/EditTask';
 import './styles/themes.css';
+import AnimatedBackground from './components/AnimatedBackground';
 
 function AppContent() {
   const { isAuthenticated } = useAuth();
@@ -16,11 +17,17 @@ function AppContent() {
   const [activeView, setActiveView] = useState('dashboard');
 
   if (!isAuthenticated) {
-    return isLogin ? (
-      <Login onToggleForm={() => setIsLogin(false)} />
-    ) : (
-      <Register onToggleForm={() => setIsLogin(true)} />
+    return (
+      <>
+        <AnimatedBackground />
+        {isLogin ? (
+          <Login onToggleForm={() => setIsLogin(false)} />
+        ) : (
+          <Register onToggleForm={() => setIsLogin(true)} />
+        )}
+      </>
     );
+  
   }
 
   const renderContent = () => {
